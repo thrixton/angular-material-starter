@@ -1,0 +1,56 @@
+<td-layout>
+  <td-layout-nav>
+    <div td-toolbar-content class="toolbar-content">
+      <div>
+        <button mat-icon-button class="td-menu-button" (click)="sidenav.toggle()" mdTooltip="Main menu">
+          <mat-icon svgIcon="fas:bars"></mat-icon>
+        </button>
+        <span>Angular Material Starter </span>
+        <mat-icon svgIcon="fas:heart"></mat-icon>
+      </div>
+      <div>
+        <button mat-icon-button><mat-icon svgIcon="fas:bell"></mat-icon></button>
+
+        <a mat-button *ngIf="!isLoggedIn" routerLink="/signin">
+          <mat-icon class="pad-right-icon" svgIcon="fas:user-plus"></mat-icon>
+          <span>Sign up or sign in</span>
+        </a>
+
+        <mat-menu #profileMenu>
+          <button mat-menu-item (click)="signOut()">
+            <span> <mat-icon svgIcon="fas:sign-out-alt"></mat-icon> </span> <span>Sign out</span>
+          </button>
+        </mat-menu>
+
+        <button mat-icon-button *ngIf="isLoggedIn" mat-icon-button [matMenuTriggerFor]="profileMenu">
+          <mat-icon svgIcon="fas:user-circle"></mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-sidenav-container fullscreen>
+      <mat-sidenav
+        #sidenav
+        [mode]="(mediaService.registerQuery('gt-sm') | async) ? 'side' : 'over'"
+        class="side-nav"
+        [opened]="mediaService.registerQuery('gt-sm') | async"
+      >
+        <div class="sidenav-content">
+          <div>
+            <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!mediaService.query('gt-sm')">
+              <a *ngFor="let item of menuItems" routerLink="{{ item.route }}" mat-list-item>
+                <mat-icon class="pad-right-icon" svgIcon="{{ item.icon }}"></mat-icon>
+                <span class="body-1">{{ item.title }}</span>
+              </a>
+            </mat-nav-list>
+          </div>
+        </div>
+        <div class="bottom-centre"><app-footer></app-footer></div>
+      </mat-sidenav>
+
+      <div class="main-content">
+        <div><router-outlet></router-outlet></div>
+        <div><app-notifications></app-notifications></div>
+      </div>
+    </mat-sidenav-container>
+  </td-layout-nav>
+</td-layout>

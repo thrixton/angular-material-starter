@@ -1,0 +1,82 @@
+<app-responsive-card-container>
+  <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+    <mat-card-header>
+      <mat-card-title>
+        <div layout="row">
+          <div class="flex-center"><mat-icon mat-card-avatar svgIcon="fas:user-shield"></mat-icon></div>
+          <div class="flex-center">Sign up</div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle
+        >Sign up or <span><a routerLink="/signin">Sign in</a></span></mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div layout="row" layout-xs="column">
+        <div layout="column" flex="70" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['left-container']">
+          <form #form [formGroup]="signUpForm" novalidate>
+            <div layout="row">
+              <mat-form-field flex
+                ><input
+                  matInput
+                  placeholder="Email address"
+                  type="email"
+                  name="email"
+                  [formControl]="email"
+                  required
+                  autocomplete="email"
+                />
+                <mat-error *ngIf="email.hasError('required')"><span>Email is required</span></mat-error>
+              </mat-form-field>
+            </div>
+            <div layout="row">
+              <mat-form-field flex
+                ><input
+                  matInput
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  [formControl]="password"
+                  required
+                  autocomplete="new-password"
+                />
+                <mat-error *ngIf="password.hasError('required')"><span>Password is required</span></mat-error>
+              </mat-form-field>
+            </div>
+            <div layout="row">
+              <mat-form-field flex
+                ><input
+                  matInput
+                  placeholder="Confirm password"
+                  type="password"
+                  name="confirmPassword"
+                  [formControl]="confirmPassword"
+                  required
+                  autocomplete="new-password"
+                />
+                <mat-error *ngIf="confirmPassword.hasError('required')"
+                  ><span>Password confirmation is required</span></mat-error
+                >
+                <mat-error *ngIf="confirmPassword.hasError('compare')"
+                  ><span>Password and confirmation do not match</span></mat-error
+                >
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+
+        <mat-divider *ngIf="mediaService.registerQuery('gt-xs') | async" vertical="true"></mat-divider>
+
+        <div layout="column" flex tdMediaToggle="gt-xs" [mediaClasses]="['social-container-right']">
+          <app-social-sign-in></app-social-sign-in>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions layout="row"
+      ><button flex mat-raised-button color="primary" (click)="signUp()">Sign up</button>
+      <button flex mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</app-responsive-card-container>

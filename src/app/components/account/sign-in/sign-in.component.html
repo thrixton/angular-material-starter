@@ -1,0 +1,66 @@
+<app-responsive-card-container>
+  <mat-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+    <mat-card-header>
+      <mat-card-title>
+        <div layout="row">
+          <div class="flex-center"><mat-icon mat-card-avatar svgIcon="fas:key"></mat-icon></div>
+          <div class="flex-center">Sign in</div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Sign in or
+        <span><a routerLink="/signup">Sign up</a> | <a routerLink="/forgotpassword">Forgot password?</a></span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div layout="row" layout-xs="column">
+        <div layout="column" flex="70" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['left-container']">
+          <form #form [formGroup]="fg" novalidate>
+            <div layout="row">
+              <mat-form-field flex>
+                <input
+                  matInput
+                  placeholder="Email address"
+                  type="text"
+                  name="email"
+                  [formControl]="email"
+                  required
+                  autocomplete="email"
+                />
+                <mat-error *ngIf="email.hasError('required')"> Email address is required </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div layout="row">
+              <mat-form-field flex>
+                <input
+                  matInput
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  [formControl]="password"
+                  required
+                  autocomplete="current-password"
+                />
+                <mat-error *ngIf="password.hasError('required')"> Password is required </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+
+        <mat-divider *ngIf="mediaService.registerQuery('gt-xs') | async" vertical="true"></mat-divider>
+
+        <div layout="column" flex tdMediaToggle="gt-xs" [mediaClasses]="['social-container-right']">
+          <app-social-sign-in></app-social-sign-in>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+    <mat-card-actions layout="row">
+      <button flex mat-raised-button color="primary" (click)="signIn()">Sign in</button>
+      <button flex mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</app-responsive-card-container>

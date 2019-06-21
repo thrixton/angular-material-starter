@@ -1,0 +1,11 @@
+<td-message
+  #notification
+  *ngIf="show"
+  color="{{colour}}"
+  icon="{{icon}}"
+  class="pad-sm"
+  label="{{title}}"
+  sublabel="{{message}}"
+>
+  <button td-message-actions mat-icon-button (click)="notification.close()"><mat-icon>cancel</mat-icon></button>
+</td-message>

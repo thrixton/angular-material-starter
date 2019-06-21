@@ -1,0 +1,35 @@
+.toolbar-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-nav {
+    width: 257px;
+    display: flex;
+    flex-direction: column; // justify-content: space-between;
+    height: 100%;
+}
+
+.sidenav-content {
+    flex: 1 0 auto;
+}
+
+.pad-right-icon {
+    margin-right: 0.4rem;
+}
+
+.bottom-centre {
+    // position: fixed;
+    // left: 50%; // bottom: 20px;
+    // left: 50%; // transform: translate(-50%, -50%);
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column; // justify-content: space-between;
+    justify-content: space-between;
+    height: 100%;
+}

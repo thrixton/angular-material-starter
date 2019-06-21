@@ -1,0 +1,37 @@
+/* unvisited link */
+
+a:link {
+    color: #e65100;
+}
+
+/* visited link */
+
+a:visited {
+    color: #e65100;
+}
+
+/* mouse over link */
+
+a:hover {
+    color: #f57c00;
+}
+
+/* selected link */
+
+a:active {
+    color: #f57c00;
+}
+
+mat-card-title mat-icon {
+    padding-right: 5px;
+}
+
+.label-icon {
+    padding-right: 5px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
