@@ -1,6 +1,6 @@
 # angular-material-starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+Cloned from [angular-material-starter](https://github.com/thrixton/angular-material-starter)
 
 ## Development server
 
@@ -42,13 +42,24 @@ By default, this is a light theme, to change to a dark theme, modify the `$theme
 Global styles are in [styles.scss](./src/styles.scss)  
 Link colours are custom and can be changed in [styles.scss](./src/styles.scss)
 
+## Cloning
+
+To clone this project as a template, modify the project name in the following places
+
+1. `name` element in [package.json](./package.json)
+2. `name` element in [package.json](./package-lock.json)
+3. `projects` node and all other references to the project in [angular.json](./angular.json)
+4. Change the `build` targets in [package.json](./package.json) to reflect your project name in [angular.json](./angular.json)
+5. Toolbar header in [app.component.html](./src/app/components/app/app.component.html)
+6. App spec file, [app.component.spec.ts](./src/app/components/app/app.component.spec.ts)
+7. `<title>` in [index.html](./src/index.html)
+8. This `README`
+
 # Features
 
 ## Validation Handler
 
-[src](./src/app/directives/validation-handler.directive.ts)
-
-- Client side display of validation messages from the server
+Client side display of validation messages from the server: [validation-handler.directive](./src/app/directives/validation-handler.directive.ts)
 
 # Icons
 
